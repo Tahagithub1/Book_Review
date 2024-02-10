@@ -5,11 +5,12 @@
   <meta charset="UTF-8">
   <title>Book Reviews</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+  <script src="//unpkg.com/alpinejs" defer></script>
 
   {{-- blade-formatter-disable --}}
   <style type="text/tailwindcss">
     .btn {
-      @apply bg-white rounded-md px-4 py-2 text-center font-medium text-slate-500 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-50 h-10;
+      @apply  bg-white rounded-md px-4 py-2 text-center font-medium text-slate-500 shadow-sm ring-1 ring-slate-700/10 hover:bg-slate-100 h-10;
     }
 
     .input {
@@ -29,7 +30,7 @@
     }
 
     .book-item {
-      @apply text-sm rounded-md bg-white p-4 leading-6 text-slate-900 shadow-md shadow-black/5 ring-1 ring-slate-700/10;
+      @apply  text-sm rounded-md bg-white p-4 leading-6 text-slate-900 shadow-md shadow-black/5 ring-1 ring-slate-700/10;
     }
 
     .book-title {
@@ -49,7 +50,7 @@
     }
 
     .empty-book-item {
-      @apply text-sm rounded-md bg-white py-10 px-4 text-center leading-6 text-slate-900 shadow-md shadow-black/5 ring-1 ring-slate-700/10;
+      @apply  text-sm rounded-md bg-white py-10 px-4 text-center leading-6 text-slate-900 shadow-md shadow-black/5 ring-1 ring-slate-700/10;
     }
 
     .empty-text {
@@ -63,7 +64,7 @@
   {{-- blade-formatter-enable --}}
 </head>
 
-<body class="container mx-auto mt-10 mb-10 max-w-3xl">
+<body class="container mx-auto mt-10 mb-10 max-w-3xl bg-gray-100">
   @yield('content')
 </body>
 
