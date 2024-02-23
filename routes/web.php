@@ -26,5 +26,4 @@ Route::resource('books' , BookController::class)->only(['index' , 'show']);
 
 Route::resource('book.reviewes' , ReviweController::class)
 ->scoped(['review' => 'book'])
-->only(['create' , 'store'])
-;
+->only(['create' , 'store']);

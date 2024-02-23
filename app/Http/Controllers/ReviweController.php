@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Book;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\RateLimiter;
+use App\Models\Message;
 class ReviweController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+
+    //  $this->middleware('throttle:Limit')->only(['store']);
+
+
+    }
+
     public function index()
     {
         //

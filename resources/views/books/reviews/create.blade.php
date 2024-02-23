@@ -16,7 +16,17 @@
         <option value="{{ $i }}">{{ $i }}</option>
       @endfor
     </select>
-
+    @if ($errors->any())
+    <div style="color:red">
+        <ul>
+            @foreach ($errors->all() as $error)
+                 <li>
+                    {{ $error }}
+                 </li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <button type="submit" class="btn">Add Review</button>
   </form>
 @endsection
