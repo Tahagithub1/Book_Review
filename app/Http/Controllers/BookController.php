@@ -30,23 +30,23 @@ class BookController extends Controller
 
 
 
-        $books = match ($filter) {
-            'popular_last_month'  => $books->popularLastMonth(),
-            'popular_last_6months'  => $books->popularLast6Months(),
-            'highest_rated_last_month'  => $books->highsetRatingLastMonth(),
-            'highest_rated_last_6months'  => $books->highsetRatingLast6Months(),
-             default => $books->last()->withAvgRating()->withReviewsCount()
-        };
+//        $books = match ($filter) {
+//            'popular_last_month'  => $books->popularLastMonth(),
+//            'popular_last_6months'  => $books->popularLast6Months(),
+//            'highest_rated_last_month'  => $books->highsetRatingLastMonth(),
+//            'highest_rated_last_6months'  => $books->highsetRatingLast6Months(),
+//             default => $books->last()->withAvgRating()->withReviewsCount()
+//        };
 // dd($books);
         //   $books = $books->get();
-          $cacheKey = 'books:' . $filter . ':' . $title;
-          $books =
-           cache()->remember(
-            $cacheKey
-            , 3600
-            , fn()=>
-            $books->get()
-         );
+//          $cacheKey = 'books:' . $filter . ':' . $title;
+//          $books =
+//           cache()->remember(
+//            $cacheKey
+//            , 3600
+//            , fn()=>
+//            $books->get()
+//         );
         return view('books.index' , ['books' => $books]);
         // compact('books')
     }

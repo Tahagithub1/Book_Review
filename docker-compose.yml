@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+    laravel-app:
+        image: php:8.1-apache
+        container_name: laravel-app-book
+        ports:
+            - "8001:80"
+        volumes:
+            - .:/var/www/html
+        networks:
+            - my-network
+        environment:
+            - APACHE_DOCUMENT_ROOT=/var/www/html/public
+        command: >
+            bash -c "docker-php-ext-install pdo pdo_mysql &&
+                     apache2-foreground"
+
+    mysql:
+        image: mysql:8.0
+        container_name: mysql-book
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: laravel
+            MYSQL_USER: laravel
+            MYSQL_PASSWORD: laravel
+        networks:
+            - my-network
+        volumes:
+            - mysql_data:/var/lib/mysql
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: phpmyadmin-book
+        ports:
+            - "8081:80"
+        environment:
+            PMA_HOST: mysql-book
+            MYSQL_ROOT_PASSWORD: root
+        networks:
+            - my-network
+
+volumes:
+    mysql_data:
+
+networks:
+    my-network:
+        driver: bridge
